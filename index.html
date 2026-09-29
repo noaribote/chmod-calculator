@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHMOD Calculator | RIBOTE--MORAL Noa</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css" integrity="sha512-QeR2VH+lsBE5LSAe1Q5EnTBbe7XTBubt8dG93Y7gidSgdMCr8nVqKcfKAMyN96SV8KDbZVTDXChatu5G2KQGzg==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="https://unpkg.com/@coreui/icons/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <div id="particles-js" class="FlexCenter">
+        <nav>
+            <button id="appTask"><i class="fa-solid fa-calculator"></i></button>
+            <button id="terminalTask"><i class="cil-terminal"></i></button>
+            <button id="wikiTask"><i class="fa-solid fa-globe"></i></button>
+        </nav>
+        
+        <div class="terminal" id="terminal">
+            <div class="terminal-header" id="terminalHeader">
+                <div class="terminal-title">
+                    <span class="terminal-icon">▸_</span>
+                    <span>Terminal</span>
+                </div>
+                <div class="window-buttons">
+                    <button class="window-btn" id="minimizeBtn" title="Réduire">—</button>
+                    <button class="window-btn" id="maximizeBtn" title="Plein écran">□</button>
+                    <button class="window-btn close" id="closeBtn" title="Fermer">×</button>
+                </div>
+            </div>
+            <div class="terminal-body" id="terminalBody">
+                <div class="line firstcolor">Terminal exemple</div>
+                <div class="line gray">Type "help" to display the available commands.</div>
+                <br>
+                <div class="command-line">
+                    <span class="prompt">alous@noaribote.fr<span class="white">:</span><span class="blue">~</span><span class="white">$</span></span>
+                    <input class="command-input" id="commandInput" autocomplete="off" spellcheck="false">
+                </div>
+            </div>
+        </div>
+        <!-- <h1>CHMOD Calculator</h1> -->
+    </div>
+</body>
+<script src="lib/particles-vincent-garreau/particles.js"></script>
+<script src="lib/particles-vincent-garreau/app.js"></script>
+<script src="assets/scripts/nav_buttons.js"></script>
+<script src="assets/scripts/terminal.js"></script>
+<script src="assets/scripts/calculator.js" type="module"></script>
+</html>

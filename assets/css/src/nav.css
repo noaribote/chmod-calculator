@@ -1,0 +1,26 @@
+nav {
+    position: absolute;
+    left: 0; top: 0;
+    height: 100%; width: 80px;
+    background: rgba(20, 0, 14, 0.699);
+    user-select: none;
+}
+
+nav button {
+    background: rgb(37, 37, 37);
+    width: 70px; height: 60px;
+    border-radius: 7px;
+    margin: 5px;
+    font-size: 40px;
+    border: none;
+    transition: 0.2s ease-in-out;
+}
+
+nav button:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+} nav button:focus { transform: scale(0.9); }
+
+#appTask { color: rgb(138, 175, 255); }
+#terminalTask { color: rgb(97, 97, 97); font-size: 57px; }
+#wikiTask { color: rgb(255, 205, 113); }
