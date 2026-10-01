@@ -10,7 +10,6 @@ const input = document.getElementById("commandInput");
 taskButton.addEventListener("click", () => {
     terminal.classList.remove("minimized");
     terminal.classList.add("open");
-    taskButton.classList.add("active");
     setTimeout(() => {
         input.focus();
     }, 250);
@@ -19,7 +18,6 @@ taskButton.addEventListener("click", () => {
 closeBtn.addEventListener("click", () => {
     terminal.classList.remove("open");
     terminal.classList.remove("minimized");
-    taskButton.classList.remove("active");
 });
 
 minimizeBtn.addEventListener("click", () => { terminal.classList.toggle("minimized"); });
@@ -138,7 +136,6 @@ function executeCommand(command) {
             break;
         case "exit":
             terminal.classList.remove("open");
-            taskButton.classList.remove("active");
             break;
         default:
             output.innerHTML =

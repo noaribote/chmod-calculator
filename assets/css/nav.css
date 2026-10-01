@@ -21,6 +21,6 @@ nav button:hover {
     cursor: pointer;
 } nav button:focus { transform: scale(0.9); }
 
-#appTask { color: rgb(138, 175, 255); }
+.appTask { color: var(--c-calculator); }
 #terminalTask { color: rgb(97, 97, 97); font-size: 57px; }
 #wikiTask { color: rgb(255, 205, 113); }

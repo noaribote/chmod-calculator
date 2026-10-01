@@ -1,4 +1,4 @@
-import {  } from "functions/functions.js"
+import {  } from "./functions/functions.js"
 
 document.addEventListener("DOMContentLoaded", () => {
 

@@ -1,0 +1,37 @@
+#IconDesktop {
+    --to-center-form-s: 40px;
+    --to-center-form-m: 10px;
+    background: transparent;
+    width: 120px; height: 120px;
+    border-radius: 7px;
+    position: absolute;
+    top: 140px; left: 250px;
+    border: none;
+    text-decoration: none;
+    color: white;
+    user-select: none;
+} #IconDesktop:hover {
+    cursor: pointer;
+    background: rgba(233, 231, 231, 0.178);
+}
+
+#IconDesktop i {
+    position: relative;
+    color: var(--c-calculator);
+    font-size: var(--to-center-form-s);
+    margin-bottom: var(--to-center-form-m);
+    left: calc(50% - (var(--to-center-form-s) / 2) - (var(--to-center-form-m) / 2));
+}
+
+#interface {
+    position: absolute;
+    top: 2%; right: 2%;
+    width: calc(96% - 80px); height: 96%;
+    background: rgba(13, 15, 18, .25);
+    backdrop-filter: blur(20px);
+    border-radius: 17px;
+    animation: HelloInterface 0.2s forwards;
+    display: none;
+    box-shadow: var(--s-windows);
+    border: 1px solid rgba(0, 17, 255, 0.178);
+}

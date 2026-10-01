@@ -3,18 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="RIBOTE--MORAL Noa">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/linux_yellow_logo.ico">
     <title>CHMOD Calculator | RIBOTE--MORAL Noa</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="favicon.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css" integrity="sha512-QeR2VH+lsBE5LSAe1Q5EnTBbe7XTBubt8dG93Y7gidSgdMCr8nVqKcfKAMyN96SV8KDbZVTDXChatu5G2KQGzg==" crossorigin="anonymous" referrerpolicy="no-referrer">
     <link rel="stylesheet" href="https://unpkg.com/@coreui/icons/css/all.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-    <div id="particles-js" class="FlexCenter">
+    <main id="particles-js" class="FlexCenter">
         <nav>
-            <button id="appTask"><i class="fa-solid fa-calculator"></i></button>
+            <button class="appTask"><i class="fa-solid fa-shield-halved"></i></button>
             <button id="terminalTask"><i class="cil-terminal"></i></button>
             <button id="wikiTask"><i class="fa-solid fa-globe"></i></button>
         </nav>
+
+        <button id="IconDesktop" class="appTask FlexCenter">
+            <i class="fa-solid fa-shield-halved"></i>
+            <strong>CHMOD Calculator</strong>
+        </button>
+
+        <section id="interface">
+            <button id="closeInterface"><i class="fa-solid fa-xmark"></i></button>
+        </section>
         
         <div class="terminal" id="terminal">
             <div class="terminal-header" id="terminalHeader">
@@ -23,9 +36,9 @@
                     <span>Terminal</span>
                 </div>
                 <div class="window-buttons">
-                    <button class="window-btn" id="minimizeBtn" title="Réduire">—</button>
-                    <button class="window-btn" id="maximizeBtn" title="Plein écran">□</button>
-                    <button class="window-btn close" id="closeBtn" title="Fermer">×</button>
+                    <button class="window-btn" id="minimizeBtn" title="Réduire"><i class="fa-solid fa-minus"></i></button>
+                    <button class="window-btn" id="maximizeBtn" title="Plein écran"><i class="fa-regular fa-square"></i></button>
+                    <button class="window-btn close" id="closeBtn" title="Fermer"><i class="fa-solid fa-xmark"></i></button>
                 </div>
             </div>
             <div class="terminal-body" id="terminalBody">
@@ -38,8 +51,7 @@
                 </div>
             </div>
         </div>
-        <!-- <h1>CHMOD Calculator</h1> -->
-    </div>
+    </main>
 </body>
 <script src="lib/particles-vincent-garreau/particles.js"></script>
 <script src="lib/particles-vincent-garreau/app.js"></script>
