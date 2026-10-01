@@ -34,7 +34,7 @@ Concentrons nous davantage sur les valeurs ``r`` ``w`` et ``x`` :
 - ``w`` a pour valeur **2**
 - ``x`` a pour valeur **1**
 
-Ces valeurs octal (0 à 7) sont activées par binaire. En effet, quand on lit ``drwxrwxrwx`` nous lisons en réalité ``1111111111``.
+Ces valeurs octales (0 à 7) sont activées par binaire. En effet, quand on lit ``drwxrwxrwx`` nous lisons en réalité ``1111111111``.
 
 Par exemple :
 - ``-rw-r-----`` = ``0110100000``
