@@ -27,11 +27,148 @@
     position: absolute;
     top: 2%; right: 2%;
     width: calc(96% - 80px); height: 96%;
-    background: rgba(13, 15, 18, .25);
-    backdrop-filter: blur(20px);
+    background: #181c25;
+    border: 1px solid #292f3c;
     border-radius: 17px;
     animation: HelloInterface 0.2s forwards;
     display: none;
     box-shadow: var(--s-windows);
-    border: 1px solid rgba(0, 17, 255, 0.178);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* a nettoyer  */
+
+.container {
+  position: relative;
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+.container * { box-sizing: border-box; }
+
+.subtitle {
+  color: #8b93a7;
+  margin-bottom: 30px;
+}
+
+.calculator {
+  border-radius: 18px;
+  padding: 28px;
+  max-width: 800px;
+}
+
+.top {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 25px;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: #aeb6c7;
+  font-size: 14px;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 10px;
+  border: 1px solid #343b4b;
+  background: #10131a;
+  color: white;
+  font-size: 20px;
+  font-family: monospace;
+  outline: none;
+}
+
+input[type="text"]:focus { border-color: #6c7cff; }
+
+.permissions {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.permission-group {
+  background: #11141b;
+  border: 1px solid #292f3c;
+  border-radius: 14px;
+  padding: 18px;
+}
+
+.permission-group h3 {
+  margin: 0 0 15px;
+  text-align: center;
+  font-size: 16px;
+}
+
+.permission {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 0;
+  color: #cbd1dd;
+}
+
+.permission input {
+  width: 18px;
+  height: 18px;
+  accent-color: #6c7cff;
+  cursor: pointer;
+}
+
+.result {
+  margin-top: 25px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.result-box {
+  background: #10131a;
+  border: 1px solid #292f3c;
+  border-radius: 12px;
+  padding: 18px;
+}
+
+.result-box .label {
+  color: #8992a5;
+  font-size: 13px;
+  margin-bottom: 8px;
+}
+
+.value {
+  font-family: monospace;
+  font-size: 25px;
+  font-weight: bold;
+  color: #fff;
+  word-break: break-all;
+}
+
+.command {
+  margin-top: 15px;
+  background: #0b0d12;
+  border: 1px solid #292f3c;
+  border-radius: 12px;
+  padding: 16px;
+  font-family: monospace;
+  color: #8ee6a8;
+  font-size: 17px;
+  cursor: pointer;
+} .command:hover { background: #0e1118 }

@@ -1,3 +1,6 @@
-@media screen and (max-width: 450px) {
-    nav { display: none; }
+@media (max-width: 650px) {
+  .top, .permissions, .result { grid-template-columns: 1fr }
+  .calculator { padding: 18px }
 }
+
+@media screen and (max-width: 450px) { nav { display: none; } }

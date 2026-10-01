@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="RIBOTE--MORAL Noa">
+    <meta name="description" content="Linux CHMOD command permission calculator and converter.">
     <link rel="icon" type="image/png" sizes="16x16" href="assets/images/linux_yellow_logo.ico">
     <title>CHMOD Calculator | RIBOTE--MORAL Noa</title>
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
@@ -25,9 +26,75 @@
             <strong>CHMOD Calculator</strong>
         </button>
 
-        <section id="interface">
+        <main id="interface" class="container FlexCenter">
             <button id="closeInterface"><i class="fa-solid fa-xmark"></i></button>
-        </section>
+            <h1>CHMOD Calculator</h1>
+            <p class="subtitle">Convert Linux permissions between numeric and symbolic notation.</p>
+            <section class="calculator">
+
+                <div class="top">
+                    <div class="input-group">
+                        <label for="octal">Numeric</label>
+                        <input id="octal" type="text" value="755" maxlength="4" placeholder="755" autocomplete="off">
+                    </div>
+                    <div class="input-group">
+                        <label for="symbolic">Symbolic</label>
+                        <input id="symbolic" type="text" value="rwxr-xr-x" placeholder="rwxr-xr-x" autocomplete="off">
+                    </div>
+                </div>
+
+                <div class="permissions">
+                    <div class="permission-group">
+                        <h3>Owner</h3>
+                        <label class="permission">Read (r)
+                            <input type="checkbox" id="owner-r">
+                        </label>
+                        <label class="permission">Write (w)
+                            <input type="checkbox" id="owner-w">
+                        </label>
+                        <label class="permission">Execute (x)
+                            <input type="checkbox" id="owner-x">
+                        </label>
+                    </div>
+                    <div class="permission-group">
+                        <h3>Group</h3>
+                        <label class="permission">Read (r)
+                            <input type="checkbox" id="group-r">
+                        </label>
+                        <label class="permission">Write (w)
+                            <input type="checkbox" id="group-w">
+                        </label>
+                        <label class="permission">Execute (x)
+                            <input type="checkbox" id="group-x">
+                        </label>
+                    </div>
+                    <div class="permission-group">
+                        <h3>Others</h3>
+                        <label class="permission">Read (r)
+                            <input type="checkbox" id="other-r">
+                        </label>
+                        <label class="permission">Write (w)
+                            <input type="checkbox" id="other-w">
+                        </label>
+                        <label class="permission">Execute (x)
+                            <input type="checkbox" id="other-x">
+                        </label>
+                    </div>
+                </div>
+
+                <div class="result">
+                    <div class="result-box">
+                        <div class="label">Numeric</div>
+                        <div class="value" id="octalResult">755</div>
+                    </div>
+                    <div class="result-box">
+                        <div class="label">Symbolic</div>
+                        <div class="value" id="symbolicResult">rwxr-xr-x</div>
+                    </div>
+                </div>
+                <div class="command" id="command" title="Cliquer pour copier">chmod 755 [document]</div>
+            </section>
+        </main>
         
         <div class="terminal" id="terminal">
             <div class="terminal-header" id="terminalHeader">
