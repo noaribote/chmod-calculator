@@ -69,3 +69,8 @@ Nous voulons que __code.js__ soit lisible et modifiable par tous mais que son ex
 
 5) On concatène : **7** + **6** + **6** = **766**
 6) Et enfin, on prépare notre commande : ``chmod 766 code.js``
+
+# Lancer le projet (~1 minute) :
+
+1) Ouvrez le dossier extrait de son archive contenant le projet
+2) Cliquez sur "index.html"
