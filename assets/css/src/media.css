@@ -3,4 +3,12 @@
   .calculator { padding: 18px }
 }
 
-@media screen and (max-width: 450px) { nav { display: none; } }
+@media screen and (max-width: 450px) {
+  #IconDesktop { top: 50px !important; left: 50px !important; }
+  #interface { width: 96% !important; }
+  #closeInterface { 
+    top: 0 !important;
+    right: 0 !important;
+  }
+  nav { display: none; }
+}
