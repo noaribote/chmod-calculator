@@ -5,6 +5,7 @@ const symbolicInput = document.getElementById("symbolic");
 const octalResult = document.getElementById("octalResult");
 const symbolicResult = document.getElementById("symbolicResult");
 const command = document.getElementById("command");
+const copyIcon = document.getElementById("copyIconFile");
 
 function updateFromOctal() {
     let value = octalInput.value.replace(/\D/g, "").slice(-3);
@@ -16,7 +17,7 @@ function updateFromOctal() {
     octalResult.textContent = octal;
     symbolicResult.textContent = symbolic;
     updateCheckboxesFromSymbolic(symbolic);
-    command.textContent = `chmod ${octal} [document]`;
+    command.textContent = `chmod ${octal} [cible]`;
 };
 
 function updateFromSymbolic() {
@@ -28,7 +29,7 @@ function updateFromSymbolic() {
     octalResult.textContent = octal;
     symbolicResult.textContent = value;
     updateCheckboxesFromSymbolic(value);
-    command.textContent = `chmod ${octal} [document]`;
+    command.textContent = `chmod ${octal} [cible]`;
 };
 
 function updateFromCheckboxes() {
@@ -38,17 +39,16 @@ function updateFromCheckboxes() {
     symbolicInput.value = symbolic;
     octalResult.textContent = octal;
     symbolicResult.textContent = symbolic;
-    command.textContent = `chmod ${octal} [document]`;
+    command.textContent = `chmod ${octal} [cible]`;
 };
-
-// a modifier : mettre une icon en guise de repère pour le "copié !"
 
 async function copyCommand() {
     await navigator.clipboard.writeText(command.textContent);
-    const oldText = command.textContent;
-    command.textContent = "Commande copiée !";
+    copyIcon.classList.remove("fa-copy");
+    copyIcon.classList.add("fa-check");
     setTimeout(() => {
-        command.textContent = oldText;
+        copyIcon.classList.remove("fa-check");
+        copyIcon.classList.add("fa-copy");
     }, 1200);
 };
 

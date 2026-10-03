@@ -28,41 +28,45 @@
     top: 2%; right: 2%;
     width: calc(96% - 80px); height: 96%;
     background: #181c25;
-    border: 1px solid #292f3c;
+    border: 1px solid var(--i-br-c);
     border-radius: 17px;
     animation: HelloInterface 0.2s forwards;
     display: none;
     box-shadow: var(--s-windows);
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* a nettoyer  */
-
 .container {
+  --margin-text: 20px;
   position: relative;
   font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+} .container * { box-sizing: border-box; } .container *::selection { background-color: var(--t-clr) }
+
+#closeInterface {
+  background: transparent;
+  padding: calc(var(--margin-text) / 2);
+  border-radius: 7px;
+  border: none;
+  font-size: var(--margin-text);
+  position: absolute;
+  right: var(--margin-text); top: var(--margin-text);
+  text-align: end;
+  margin: var(--margin-text);
+  color: #fff;
+} #closeInterface:hover {
+  background: rgba(128, 128, 128, 0.473);
+  cursor: pointer;
 }
-.container * { box-sizing: border-box; }
+
+.container h1 {
+  margin: var(--margin-text) 0 0 calc(var(--margin-text) * 2);
+  text-align: start;
+}
 
 .subtitle {
+  margin: 0 calc(var(--margin-text) * 2);
   color: #8b93a7;
   margin-bottom: 30px;
+  text-align: start;
 }
 
 .calculator {
@@ -89,15 +93,15 @@ input[type="text"] {
   width: 100%;
   padding: 14px 16px;
   border-radius: 10px;
-  border: 1px solid #343b4b;
-  background: #10131a;
-  color: white;
+  border: 1px solid var(--i-br);
+  background: var(--i-bg);
+  color: #fff;
   font-size: 20px;
   font-family: monospace;
   outline: none;
 }
 
-input[type="text"]:focus { border-color: #6c7cff; }
+input[type="text"]:focus { border-color: var(--t-clr); }
 
 .permissions {
   display: grid;
@@ -106,8 +110,8 @@ input[type="text"]:focus { border-color: #6c7cff; }
 }
 
 .permission-group {
-  background: #11141b;
-  border: 1px solid #292f3c;
+  background: var(--i-bg-off);
+  border: 1px solid var(--i-br-c);
   border-radius: 14px;
   padding: 18px;
 }
@@ -129,7 +133,7 @@ input[type="text"]:focus { border-color: #6c7cff; }
 .permission input {
   width: 18px;
   height: 18px;
-  accent-color: #6c7cff;
+  accent-color: var(--t-clr);
   cursor: pointer;
 }
 
@@ -141,8 +145,8 @@ input[type="text"]:focus { border-color: #6c7cff; }
 }
 
 .result-box {
-  background: #10131a;
-  border: 1px solid #292f3c;
+  background: var(--i-bg);
+  border: 1px solid var(--i-br-c);
   border-radius: 12px;
   padding: 18px;
 }
@@ -161,14 +165,22 @@ input[type="text"]:focus { border-color: #6c7cff; }
   word-break: break-all;
 }
 
+.containerCopyCMD { position: relative; }
+
+#copyIconFile {
+  color: #ffffff7e;
+  position: absolute;
+  right: calc(var(--margin-text) / 2); top: calc(var(--margin-text) / 2);
+}
+
 .command {
   margin-top: 15px;
-  background: #0b0d12;
-  border: 1px solid #292f3c;
+  background: var(--i-bg-c);
+  border: 1px solid var(--i-bg-c);
   border-radius: 12px;
   padding: 16px;
   font-family: monospace;
-  color: #8ee6a8;
+  color: var(--t-valid);
   font-size: 17px;
   cursor: pointer;
-} .command:hover { background: #0e1118 }
+} .command:hover { background: var(--i-bg); border: 1px solid var(--i-br); }
