@@ -1,14 +1,35 @@
-@media (max-width: 650px) {
-  .top, .permissions, .result { grid-template-columns: 1fr }
-  .calculator { padding: 18px }
+@media (max-width: 900px) {
+  #interface {
+    width: 96%;
+    height: 96%;
+    right: 2%;
+  }
+
+  .calculator { padding: 24px; }
 }
 
-@media screen and (max-width: 450px) {
+@media (max-width: 700px) {
+  #interface { align-items: flex-start; }
+  .container { width: 100%; min-width: 0; }
+  .permissions { grid-template-columns: minmax(0, 1fr); }
+  .permission-group { width: 100%; }
+  .top, .result { grid-template-columns: 1fr; }
+  .top > *, .result > * { min-width: 0; }
+  .command { overflow-wrap: anywhere; }
+
   #IconDesktop { top: 50px !important; left: 50px !important; }
-  #interface { width: 96% !important; }
+  #interface { width: 96% !important; height: 96% !important; }
   #closeInterface { 
     top: 0 !important;
     right: 0 !important;
   }
   nav { display: none; }
+  .container h1 { margin-left: 16px; margin-right: 16px; }
+  .subtitle { margin-left: 16px; margin-right: 16px; }
+  .calculator { padding: 16px; }
+}
+
+@media screen and (max-width: 480px) {
+  .container h1 { margin-top: 60px !important; }
+  .calculator { margin-top: 50px !important; }
 }
