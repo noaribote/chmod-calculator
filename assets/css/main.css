@@ -24,15 +24,17 @@
 }
 
 #interface {
-    position: absolute;
-    top: 2%; right: 2%;
-    width: calc(96% - 80px); height: 96%;
-    background: #181c25;
-    border: 1px solid var(--i-br-c);
-    border-radius: 17px;
-    animation: HelloInterface 0.2s forwards;
-    display: none;
-    box-shadow: var(--s-windows);
+  overflow: hidden;
+  position: absolute;
+  top: 2%; right: 2%;
+  width: calc(96% - 80px); height: 96%;
+  background: #181c25;
+  border: 1px solid var(--i-br-c);
+  border-radius: 17px;
+  animation: HelloInterface 0.2s forwards;
+  display: none;
+  box-shadow: var(--s-windows);
+  align-items: center;
 }
 
 .container {
@@ -72,7 +74,9 @@
 .calculator {
   border-radius: 18px;
   padding: 28px;
-  max-width: 800px;
+  width: min(100%, 800px);
+  margin-top: 100px;
+  margin-inline: auto;
 }
 
 .top {
@@ -105,11 +109,13 @@ input[type="text"]:focus { border-color: var(--t-clr); }
 
 .permissions {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 14px;
+  min-width: 0;
 }
 
 .permission-group {
+  min-width: 0;
   background: var(--i-bg-off);
   border: 1px solid var(--i-br-c);
   border-radius: 14px;
