@@ -6,6 +6,21 @@ const closeBtn = document.getElementById("closeBtn");
 const minimizeBtn = document.getElementById("minimizeBtn");
 const maximizeBtn = document.getElementById("maximizeBtn");
 const input = document.getElementById("commandInput");
+const terminalPermissionsStorageKey = "chmodCalculatorTerminalPermissions";
+
+let filePermissions = { about: "rwxrwxrwx", folder: "rwxrwxrwx" };
+function persistTerminalPermissions() {
+    localStorage.setItem(terminalPermissionsStorageKey, JSON.stringify(filePermissions));
+}
+
+try {
+    const savedPermissions = JSON.parse(localStorage.getItem(terminalPermissionsStorageKey));
+    if (savedPermissions && /^[rwx-]{9}$/.test(savedPermissions.about) && /^[rwx-]{9}$/.test(savedPermissions.folder)) {
+        filePermissions = savedPermissions;
+    }
+} catch (error) {
+    localStorage.removeItem(terminalPermissionsStorageKey);
+}
 
 taskButton.addEventListener("click", () => {
     terminal.classList.remove("minimized");
@@ -53,12 +68,13 @@ input.addEventListener("keydown", (event) => {
     commandText.innerHTML =
         `<span class="prompt">alous@noaribote.fr<span class="white">:</span><span class="blue">~</span><span class="white">$</span></span> ${escapeHTML(command)}`;
     body.insertBefore(commandText, oldLine);
-    executeCommand(command.toLowerCase());
+    executeCommand(command);
     input.value = "";
     body.scrollTop = body.scrollHeight;
 });
 
-function executeCommand(command) {
+function executeCommand(rawCommand) {
+    const command = rawCommand.toLowerCase();
     const output = document.createElement("div");
     output.className = "line";
     switch (command) {
@@ -68,13 +84,14 @@ function executeCommand(command) {
                     Available commands :
                 </span><br>
                 <span class="gray">
-                    help&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Show commands list<br>
-                    clear&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Clear the terminal<br>
-                    date&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Show the current date<br>
-                    time&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Show the current time<br>
-                    ls [option]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; List the files/folders in the directory<br>
-                    cat [fichier]&nbsp;&nbsp;&nbsp; View the contents of a file<br>
-                    exit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Close the terminal
+                    help&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Show commands list<br>
+                    clear&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Clear the terminal<br>
+                    date&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Show the current date<br>
+                    time&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Show the current time<br>
+                    ls [option]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; List the files/folders in the directory<br>
+                    cat [file]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; View the contents of a file<br>
+                    chmod [octal] [document]&nbsp;&nbsp;&nbsp; Change permissions using octal notation<br>
+                    exit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Close the terminal
                 </span>
             `;
             body.insertBefore(output, input.parentElement);
@@ -111,26 +128,26 @@ function executeCommand(command) {
             break;
         case "ls -l":
             output.innerHTML = `
-                -rwxrwxrwx 1 noa github 230 Sep 2026 about.txt<br>
-                drwxrwxrwx 1 noa github &nbsp;&nbsp;0 Sep 2026 <span class="blue">folder</span>
+                ${permissionString("about")} 1 noa github 230 Sep 2026 about.txt<br>
+                ${permissionString("folder")} 1 noa github &nbsp;&nbsp;0 Sep 2026 <span class="blue">folder</span>
             `;
             body.insertBefore(output, input.parentElement);
             break;
         case "ls -la":
             output.innerHTML = `
-                drwxrwxrwx 1 noa github 460 Sep 2026 <span class="blue">.</span><br>
-                drwxrwxrwx 1 noa github 460 Sep 2026 <span class="blue">..</span><br>
-                -rwxrwxrwx 1 noa github 230 Sep 2026 about.txt<br>
-                drwxrwxrwx 1 noa github &nbsp;&nbsp;0 Sep 2026 <span class="blue">folder</span>
+                ${permissionString("current")} 1 noa github 460 Sep 2026 <span class="blue">.</span><br>
+                ${permissionString("parent")} 1 noa github 460 Sep 2026 <span class="blue">..</span><br>
+                ${permissionString("about")} 1 noa github 230 Sep 2026 about.txt<br>
+                ${permissionString("folder")} 1 noa github &nbsp;&nbsp;0 Sep 2026 <span class="blue">folder</span>
             `;
             body.insertBefore(output, input.parentElement);
             break;
         case "ls -al":
             output.innerHTML = `
-                drwxrwxrwx 1 noa github 460 Sep 2026 <span class="blue">.</span><br>
-                drwxrwxrwx 1 noa github 460 Sep 2026 <span class="blue">..</span><br>
-                -rwxrwxrwx 1 noa github 230 Sep 2026 about.txt<br>
-                drwxrwxrwx 1 noa github &nbsp;&nbsp;0 Sep 2026 <span class="blue">folder</span>
+                ${permissionString("current")} 1 noa github 460 Sep 2026 <span class="blue">.</span><br>
+                ${permissionString("parent")} 1 noa github 460 Sep 2026 <span class="blue">..</span><br>
+                ${permissionString("about")} 1 noa github 230 Sep 2026 about.txt<br>
+                ${permissionString("folder")} 1 noa github &nbsp;&nbsp;0 Sep 2026 <span class="blue">folder</span>
             `;
             body.insertBefore(output, input.parentElement);
             break;
@@ -138,6 +155,15 @@ function executeCommand(command) {
             terminal.classList.remove("open");
             break;
         default:
+            const chmodMatch = rawCommand.match(/^chmod\s+([0-7]{3})\s+(folder|about\.txt)$/i);
+            if (chmodMatch) {
+                const [, octal, target] = chmodMatch;
+                const permissionKey = applyChmod(octal, target);
+                const permissionTarget = permissionKey === "folder" ? "folder" : "about.txt";
+                output.innerHTML = `Permissions updated: <span class="firstcolor">${permissionString(permissionKey)}</span> ${permissionTarget}`;
+                body.insertBefore(output, input.parentElement);
+                break;
+            }
             output.innerHTML =
                 `<span class="gray">
                     Unexpected : ${escapeHTML(command)}
@@ -145,6 +171,23 @@ function executeCommand(command) {
                 </span>`;
             body.insertBefore(output, input.parentElement);
     }
+}
+
+function applyChmod(octal, target) {
+    const symbolic = octal.split("").map(digit => {
+        const value = Number(digit);
+        return `${value & 4 ? "r" : "-"}${value & 2 ? "w" : "-"}${value & 1 ? "x" : "-"}`;
+    }).join("");
+    const permissionKey = target.toLowerCase() === "folder" ? "folder" : "about";
+    filePermissions[permissionKey] = symbolic;
+    persistTerminalPermissions();
+    return permissionKey;
+}
+
+function permissionString(kind) {
+    const defaultPermissions = "rwxrwxrwx";
+    const permission = filePermissions[kind] || defaultPermissions;
+    return `${kind === "about" ? "-" : "d"}${permission}`;
 }
 
 function escapeHTML(value) {
