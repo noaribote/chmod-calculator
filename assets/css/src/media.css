@@ -8,6 +8,8 @@
   .calculator { padding: 24px; }
 }
 
+@media screen and (max-height: 725px) { #interface { overflow-y: scroll !important } }
+
 @media (max-width: 700px) {
   #interface { align-items: flex-start; }
   .container { width: 100%; min-width: 0; }
