@@ -134,13 +134,38 @@ input[type="text"]:focus { border-color: var(--t-clr); }
   justify-content: space-between;
   padding: 8px 0;
   color: #cbd1dd;
+  user-select: none;
 }
 
-.permission input {
-  width: 18px;
-  height: 18px;
-  accent-color: var(--t-clr);
-  cursor: pointer;
+.permission input { display: none; }
+
+.toggle {
+    position: relative;
+    width: 50px;
+    height: 24px;
+    background: var(--t-bg);
+    border-radius: 50px;
+    transition: background 0.3s ease;
+    flex-shrink: 0;
+} .toggle:hover { cursor: pointer; }
+
+.toggle::before {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    left: 2px;
+    top: 2px;
+    background: #fff;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+} .permission input:checked + .toggle { background: var(--t-clr); }
+.permission input:checked + .toggle::before { transform: translateX(25px); }
+
+.permission input:focus-visible + .toggle {
+    outline: 2px solid var(--t-clr);
+    outline-offset: 3px;
 }
 
 .result {
